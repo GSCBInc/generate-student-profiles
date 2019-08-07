@@ -1,0 +1,9 @@
+# Application
+data/
+output/
+
+# JetBrains
+.idea/
+
+# Python
+__pycache__/
