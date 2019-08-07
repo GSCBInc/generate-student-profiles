@@ -27,7 +27,7 @@ class CsvReader:
 
 class CsvWriter:
 
-    fieldnames = ['Name', 'School', 'Grade', 'Date of birth', 'Lep', 'Designation']
+    fieldnames = ['Name', 'School', 'Grade', 'Date of Birth', 'Lep', 'Student Id', 'Designation']
     folder = 'output/'
 
     @staticmethod
@@ -42,14 +42,14 @@ class CsvWriter:
             os.mkdir(CsvWriter.folder)
 
         if os.path.exists(CsvWriter.folder + file_name):
-            file_handle = open(CsvWriter.folder + file_name, 'w')
+            file_handle = open(CsvWriter.folder + file_name, 'w', newline='')
         else:
-            file_handle = open(CsvWriter.folder + file_name, 'a')
+            file_handle = open(CsvWriter.folder + file_name, 'a', newline='')
 
         writer = csv.DictWriter(file_handle, fieldnames=CsvWriter.fieldnames)
 
         if file_handle.mode == 'w':
             writer.writeheader()
 
-        CsvWriter.write_list(writer)
+        CsvWriter.write_list(writer, data)
         file_handle.close()
