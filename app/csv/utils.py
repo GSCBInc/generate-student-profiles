@@ -42,9 +42,9 @@ class CsvWriter:
             os.mkdir(CsvWriter.folder)
 
         if os.path.exists(CsvWriter.folder + file_name):
-            file_handle = open(CsvWriter.folder + file_name, 'w', newline='')
-        else:
             file_handle = open(CsvWriter.folder + file_name, 'a', newline='')
+        else:
+            file_handle = open(CsvWriter.folder + file_name, 'w', newline='')
 
         writer = csv.DictWriter(file_handle, fieldnames=CsvWriter.fieldnames)
 
