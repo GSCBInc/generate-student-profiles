@@ -78,7 +78,7 @@ class Generator:
 
     @staticmethod
     def student_id():
-        return random.randrange(1000000, 10000000)
+        return random.randrange(10000, 100000000)
 
 
 class Transformer:
