@@ -21,8 +21,9 @@ class RestClient:
             return json.loads(response.decode())
         except error.HTTPError:
             if RestClient.attempt < 6:
-                logger.info('HTTPError occurred retrying request attempt %s in 5 seconds', RestClient.attempt)
-                time.sleep(5)
+                time_to_sleep = RestClient.attempt * 5
+                logger.info('HTTPError occurred retrying request attempt %s in %s seconds', RestClient.attempt, time_to_sleep)
+                time.sleep(time_to_sleep)
                 return RestClient.get(url)
             else:
                 logger.info('Unable to get response from the server after %s attempts', RestClient.attempt)
