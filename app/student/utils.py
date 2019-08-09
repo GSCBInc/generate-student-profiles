@@ -8,6 +8,8 @@ logger = logging.getLogger(__name__)
 
 class Generator:
 
+    last_student_id = 0
+
     grades = [
         # Elementary school grades | range (0, 6)
         'Pre-Kindergarten', 'Kindergarten', '1st', '2nd', '3rd', '4th',
@@ -78,7 +80,8 @@ class Generator:
 
     @staticmethod
     def student_id():
-        return random.randrange(10000, 100000000)
+        Generator.last_student_id += 1
+        return Generator.last_student_id
 
 
 class Transformer:
