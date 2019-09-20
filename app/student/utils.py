@@ -25,6 +25,20 @@ class Generator:
 
     designation = ['None', 'Special Ed', '504']
 
+    ethnicity = [
+        'Hispanic or Latino', 'Hispanic', 'Latino',
+        'American Indian', 'Indian', 'American',
+        'Alaskan Native', 'Alaskan', 'Asian',
+        'Native Hawaiian', 'Hawaiian', 'Black',
+        'Black or African American', 'African',
+        'African American', 'White', 'Caucasian',
+        'White or Caucasian', 'Not Disclosed'
+    ]
+
+    sex = ['Male', 'Female']
+
+    has_reduced_lunch = ['Yes', 'No']
+
     months_max_days = {
         1: 31, 2: 29, 3: 31, 4: 30, 5: 31, 6: 30, 7: 31, 8: 31, 9: 30, 10: 31, 11: 30, 12: 31
     }
@@ -71,12 +85,28 @@ class Generator:
         return date_of_birth
 
     @staticmethod
+    def randomly_select(selection_list):
+        return selection_list[random.randrange(len(selection_list))]
+
+    @staticmethod
     def student_is_lep():
-        return Generator.is_lep[random.randrange(2)]
+        return Generator.randomly_select(Generator.is_lep)
 
     @staticmethod
     def student_designation():
-        return Generator.designation[random.randrange(3)]
+        return Generator.randomly_select(Generator.designation)
+
+    @staticmethod
+    def student_sex():
+        return Generator.randomly_select(Generator.sex)
+
+    @staticmethod
+    def student_ethnicity():
+        return Generator.randomly_select(Generator.ethnicity)
+
+    @staticmethod
+    def student_has_reduced_lunch():
+        return Generator.randomly_select(Generator.has_reduced_lunch)
 
     @staticmethod
     def student_id():
@@ -118,5 +148,8 @@ class Transformer:
             'Designation': Generator.student_designation(),
             'Lep': Generator.student_is_lep(),
             'Student Id': Generator.student_id(),
-            'Date of Birth': Generator.student_date_of_birth(student_grade)
+            'Date of Birth': Generator.student_date_of_birth(student_grade),
+            'Reduced lunch fee': Generator.student_has_reduced_lunch(),
+            'Race': Generator.student_ethnicity(),
+            'Sex': Generator.student_sex()
         }

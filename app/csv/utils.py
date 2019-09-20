@@ -27,7 +27,10 @@ class CsvReader:
 
 class CsvWriter:
 
-    fieldnames = ['Name', 'School', 'Grade', 'Date of Birth', 'Lep', 'Student Id', 'Designation']
+    fieldnames = [
+        'Name', 'School', 'Grade', 'Date of Birth', 'Lep',
+        'Student Id', 'Designation', 'Sex', 'Reduced lunch fee', 'Race'
+    ]
     folder = 'output/'
 
     @staticmethod
